@@ -1,8 +1,12 @@
 name: pausable_stream_iterable
-description: >-
-  Pausable streams of iterables: the single subscription Stream<Iterable<T>> source is paused
-  on each non-empty Iterable and is resumed once the Iterable has been iterated to last element.
+description: Pause a single-subscription Stream<Iterable<T>> on each non-empty emitted Iterable, resuming once it has been consumed down to its last element.
 version: 1.0.0+1
+
+topics:
+  - streams
+  - iterable
+  - pagination
+  - async
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
