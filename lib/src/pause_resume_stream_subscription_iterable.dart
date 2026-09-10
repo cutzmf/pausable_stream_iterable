@@ -6,7 +6,10 @@ import 'dart:collection';
 /// It pauses when [Iterable] is not empty.
 /// It resumes when [Iterable] last element requested via [Iterable.elementAt] or [Iterable.last].
 class PauseResumeStreamSubscriptionIterable<T> with IterableMixin<T> {
-  PauseResumeStreamSubscriptionIterable(this._streamSubscription, this._decoratedIterable) {
+  /// Creates an [Iterable] decorator over the given iterable and stream
+  /// subscription, pausing the subscription if the iterable is not empty.
+  PauseResumeStreamSubscriptionIterable(
+      this._streamSubscription, this._decoratedIterable) {
     if (_decoratedIterable.isNotEmpty) _streamSubscription.pause();
   }
 
@@ -18,7 +21,9 @@ class PauseResumeStreamSubscriptionIterable<T> with IterableMixin<T> {
   T elementAt(int index) {
     final lastIndex = length - 1;
 
-    if (index >= lastIndex && !lastIndex.isNegative) _streamSubscription.resume();
+    if (index >= lastIndex && !lastIndex.isNegative) {
+      _streamSubscription.resume();
+    }
 
     return super.elementAt(index);
   }

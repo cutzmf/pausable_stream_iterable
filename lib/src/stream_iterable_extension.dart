@@ -5,6 +5,8 @@ import 'package:rxdart/rxdart.dart';
 
 import 'pause_resume_stream_subscription_iterable.dart';
 
+/// Adds pausable-iterable behaviour to a single-subscription
+/// `Stream<Iterable<T>>`. See [pauseOnNonEmptyResumeOnLast].
 extension StreamIterableExtension<T> on Stream<Iterable<T>> {
   /// Subscribes only to a single-subscription (non-broadcast) [Stream] (e.g., an `async*` generator function).
   /// Pauses the [Stream] whenever a non-empty [Iterable] is emitted. See [PauseResumeStreamSubscriptionIterable]
@@ -20,7 +22,8 @@ extension StreamIterableExtension<T> on Stream<Iterable<T>> {
     final streamSubscription = listen(null);
 
     final pausedResumedStream = SubscriptionStream(streamSubscription).map(
-      (iterable) => PauseResumeStreamSubscriptionIterable(streamSubscription, iterable),
+      (iterable) =>
+          PauseResumeStreamSubscriptionIterable(streamSubscription, iterable),
     );
 
     return pausedResumedStream.shareReplay(maxSize: 1);

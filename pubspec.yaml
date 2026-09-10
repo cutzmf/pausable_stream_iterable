@@ -1,6 +1,6 @@
 name: pausable_stream_iterable
 description: Pause a single-subscription Stream<Iterable<T>> on each non-empty emitted Iterable, resuming once it has been consumed down to its last element.
-version: 1.0.0+1
+version: 1.0.1
 
 repository: https://github.com/cutzmf/pausable_stream_iterable
 

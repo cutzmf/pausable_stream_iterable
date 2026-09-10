@@ -1,3 +1,8 @@
+## 1.0.1
+
+- Document the `PauseResumeStreamSubscriptionIterable` constructor and the `StreamIterableExtension` itself, reaching full public API documentation coverage.
+- Add `repository` and `topics` metadata to `pubspec.yaml`.
+
 ## 1.0.0+1
 
 - Pause a single-subscription `Stream<Iterable<T>>` on every non-empty emitted `Iterable`.
